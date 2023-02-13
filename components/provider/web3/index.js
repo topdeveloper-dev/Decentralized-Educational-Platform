@@ -10,7 +10,16 @@ const setListener = (provider) =>{
     provider.on("chainChanged", _ => window.location.reload())
 }
 
-c
+const createWeb3State = ({web3, provider, contract, isLoading}) =>{
+    return {
+        web3,
+        provider,
+        contract,
+        isLoading,
+        hooks : setupHooks({web3, provider, contract})
+    }
+}
+
 export default function Web3Provider({children}){
     const [web3Api, setWeb3Api] = useState(createWeb3State({web3 : null, provider : null, contract : null, isLoading : true}))
 
