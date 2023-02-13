@@ -10,11 +10,7 @@ export default function OwnedCourseCard({children, course}) {
   const stateColor = STATE_COLORS[course.state]
 
   return (
-    <div className="bg-white border shadow overflow-hidden sm:rounded-lg mb-3">
-      <div className="block sm:flex">
-        <div className="flex-1">
-          <div className="h-72 sm:h-full next-image-wrapper">
-            <Image
+    <
               className="object-cover"
               src={course.coverImage}
               width="45"
