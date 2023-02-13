@@ -10,16 +10,7 @@ const setListener = (provider) =>{
     provider.on("chainChanged", _ => window.location.reload())
 }
 
-const createWeb3State = ({web3, provider, contract, isLoading}) =>{
-    return {
-        web3,
-        provider, 
-        contract, 
-        isLoading, 
-        hooks : setupHooks({web3, provider, contract})
-    }
-}
-
+c
 export default function Web3Provider({children}){
     const [web3Api, setWeb3Api] = useState(createWeb3State({web3 : null, provider : null, contract : null, isLoading : true}))
 
@@ -36,7 +27,7 @@ export default function Web3Provider({children}){
                 console.log("This is the details of the contract", contract)
                 setWeb3Api(createWeb3State({
                     web3, provider, contract, isLoading : false
-                })) 
+                }))
             }else{
                 setWeb3Api(api => ({...api, isLoading : false}))
                 window.alert("Please install or connect Metamask");
@@ -51,7 +42,7 @@ export default function Web3Provider({children}){
         return {
             ...web3Api,
             requireInstall : !isLoading && !web3,
-            connect : provider ? 
+            connect : provider ?
             async() => {
                 try{
                     await provider.request({ method : "eth_requestAccounts"})
